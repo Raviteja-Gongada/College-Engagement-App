@@ -1,0 +1,117 @@
+<%- include('partials/header') %>
+    <link rel="stylesheet" href="/mypost.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+
+  <% let temp = mypost %>
+  <seciton class="notice row">
+    <% for(let i in mypost){ %>
+      <% if (mypost[i].email==email && mypost[i].type=="Notice") {%>
+      <div class="notice1 card mb-1">
+        <div class="card-body">
+          <div class="d-flex">
+            <h4 class="card-title"><b><%= mypost[i].title %></b></h4>
+            <div class="d-flex ms-auto">
+              <%- include('content.ejs',{url : `/content/${mypost[i].id}`}) %>
+              <%- include('edit.ejs',{url : `/edit/${mypost[i].id}`,mail: mypost[i].email}) %>
+              <%- include('delete.ejs',{url : `/delete/${mypost[i].id}`,mail: mypost[i].email}) %>
+            </div>
+          </div>
+          <% if(mypost[i].description.length>25){%>
+            <%    str1=mypost[i].description;%>
+            <%     str1=str1.substring(0,100);%>
+              <p class="card-text"><%= str1 %> . . . </p>
+            <% } else{%>
+              <%     str1=mypost[i].description; %>
+              <p class="card-text"><%= str1 %></p>
+            <% }%>
+
+          <% if(mypost[i].content.length>25){%>
+            <%    str1=mypost[i].content;%>
+            <%     str1=str1.substring(0,100);%>
+              <p class="card-text"><%= str1 %> . . . </p>
+            <% } else{%>
+              <%     str1=mypost[i].content; %>
+              <p class="card-text"><%= str1 %></p>
+            <% }%>
+              
+        </div>
+        <div class="card-footer text-muted d-flex ms-auto bg-transparent border-top-0">
+            <h5 class="mx-4">By <%= mypost[i].author %></h5>
+          <div class="views"><%= mypost[i].date %> </div>
+        </div>
+      </div>
+    <% } %>
+    <% } %>
+  </div>
+
+  </seciton>
+
+
+  <div class="container p-5">
+    <div class="row">
+      <% for(let i in mypost){ %>
+        <% if (mypost[i].email==email && (mypost[i].type=="Blog" || mypost[i].type=="Interview")) {%>
+      
+      <div class="col-12 col-sm-8 col-md-6 col-lg-4 my-3">
+        <div class="card">
+          <img class="card-img" 
+          <% if(mypost[i].type=="Blog"){%>
+          src="img/blog.jpg"
+          <% } else if(mypost[i].type=="Interview") {%>
+              src="img/Interview.jpg"
+          <% } %>
+          >
+          <div class="card">
+            <a href="#" class="btn btn-light btn-sm"><%= mypost[i].type %></a>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title text-center"><%= mypost[i].title %></h4>
+            <h5>Author: <%= mypost[i].author %></h5>
+            <% if(mypost[i].description.length>25){%>
+              <%    str1=mypost[i].description;%>
+              <%     str1=str1.substring(0,100);%>
+                <p class="cbody1 card-text"><%= str1 %> . . . </p>
+              <% } else{%>
+                <%     str1=mypost[i].description; %>
+                <p class="cbody1 card-text"><%= str1 %></p>
+              <% }%>
+
+            <% if(mypost[i].content.length>25){%>
+              <%    str1=mypost[i].content;%>
+              <%     str1=str1.substring(0,100);%>
+                <p class="cbody2 card-text"><%= str1 %> . . . </p>
+              <% } else{%>
+                <%     str1=mypost[i].content; %>
+                <p class="cbody2 card-text"><%= str1 %></p>
+              <% }%>
+              <div class="inline">
+                <%- include('content.ejs',{url : `/content/${mypost[i].id}`}) %>
+                <%- include('edit.ejs',{url : `/edit/${mypost[i].id}`,mail: mypost[i].email}) %>
+                <%- include('delete.ejs',{url : `/delete/${mypost[i].id}`,mail: mypost[i].email}) %>
+              </div>
+                
+          </div>
+          <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+            <div class="views"><%= mypost[i].date %> </div>
+            <div class="stats d-flex">
+             <%- include('upvote.ejs',{url : `/upvote/${mypost[i].id}`}) %> <p class="mx-1"><%= mypost[i].upvote %></p>
+             <%- include('downvote.ejs',{url : `/downvote/${mypost[i].id}`}) %> <p class="mx-1"><%= mypost[i].downvote %></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <% } %>
+        <% } %>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    
+  <%- include('partials/footer') %>

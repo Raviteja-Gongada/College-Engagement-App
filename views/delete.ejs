@@ -1,0 +1,9 @@
+<form action="<%= url %>?_method=DELETE" method="POST">
+    <button class="btn btn-danger m-1" type="submit">
+        <% if(mail==email) {%>
+        Delete Authorized
+        <% }else{ %>
+            Delete !Authorized
+        <% } %>
+    </button>
+</form>

@@ -1,0 +1,49 @@
+.notice{
+    margin:0;
+    padding:0;
+    font-family: adobe-caslon-w01-smbd,adobe-caslon-w08-smbd,serif;
+}
+.notice1{
+    border: 0.3rem solid gray ;
+}
+.cbody1{
+    height: 4.4rem;
+}
+.cbody2{
+    height: 4.4rem;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    html{
+      font-size: 50%;
+    }
+  }
+  
+  /* Media Query for low resolution  Tablets, Ipads */ 
+  @media (min-width: 480px) and (max-width: 767px) {
+    html{
+      font-size: 55%;
+    }
+  }
+  
+  /* Media Query for Tablets Ipads portrait mode */
+  @media (min-width: 768px) and (max-width: 1024px){
+    html{
+      font-size: 75%;
+    }
+  }
+  
+  /* Media Query for Laptops and Desktops */
+  @media (min-width: 1025px) and (max-width: 1280px){
+    html{
+      font-size: 100%;
+    }
+  }
+  
+  /* Media Query for Large screens */
+  @media (min-width: 1281px) {
+    html{
+      font-size: 100%;
+    }
+  }

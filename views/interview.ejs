@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+
+  <link rel="stylesheet" href="/blog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    
+  <div class="searchbar1 mt-4">
+    <form class="searchbar">
+        <i class="fa fa-search mx-1"></i>
+        <input id="search-item" class="mx-1" type="text" placeholder="Search by title..." name="search" onkeyup="myfunction()">
+    </form>
+</div>
+
+    <div class="container p-3">
+      <div class="row" id="item-list">
+        <% for(let i in Interview){ %>
+          <% if (Interview[i].type=="Interview") {%>
+        <div class="item col-12 col-sm-8 col-md-6 col-lg-4 my-3">
+          <div class="card">
+            <img class="card-img" src="img/Interview.jpg" alt="Bologna">
+            <div class="card">
+              <a href="#" class="btn btn-light btn-sm">Interview Experience</a>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title text-center"><%= Interview[i].title %></h4>
+              <h5>Author: <%= Interview[i].author %></h5>
+              <% if(Interview[i].description.length>25){%>
+                <%    str1=Interview[i].description;%>
+                <%     str1=str1.substring(0,100);%>
+                  <p class="cbody1 card-text"><%= str1 %> . . . </p>
+                <% } else{%>
+                  <%     str1=Interview[i].description; %>
+                  <p class="cbody1 card-text"><%= str1 %></p>
+                <% }%>
+
+              <% if(Interview[i].content.length>25){%>
+                <%    str1=Interview[i].content;%>
+                <%     str1=str1.substring(0,100);%>
+                  <p class="cbody2 card-text"><%= str1 %> . . . </p>
+                <% } else{%>
+                  <%     str1=Interview[i].content; %>
+                  <p class="cbody2 card-text"><%= str1 %></p>
+                <% }%>
+                <div class="inline">
+                  <%- include('content.ejs',{url : `/content/${Interview[i].id}`}) %>
+                  <%- include('edit.ejs',{url : `/edit/${Interview[i].id}`,mail: Interview[i].email}) %>
+                  <%- include('delete.ejs',{url : `/delete/${Interview[i].id}`,mail: Interview[i].email}) %>
+                </div>
+                  
+            </div>
+            <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+              <div class="views"><%= Interview[i].date %> </div>
+              <div class="stats d-flex">
+               <%- include('upvote.ejs',{url : `/upvote/${Interview[i].id}`}) %> <p class="mx-1"><%= Interview[i].upvote %></p>
+               <%- include('downvote.ejs',{url : `/downvote/${Interview[i].id}`}) %> <p class="mx-1"><%= Interview[i].downvote %></p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>

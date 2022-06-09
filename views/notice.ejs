@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+
+  <link rel="stylesheet" href="/notice.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    
+  <div class="searchbar1 my-4">
+    <form class="searchbar">
+        <i class="fa fa-search mx-1"></i>
+        <input id="search-item" class="mx-1" type="text" placeholder="Search by title..." name="search" onkeyup="myfunction()">
+    </form>
+</div>
+      <seciton class="notice row" id="item-list">
+        <% for(let i in notice){ %>
+          <% if (notice[i].type=="Notice") {%>
+          <div class="item card mb-1">
+            <div class="card-body">
+              <div class="d-flex">
+                <h4 class="card-title"><b><%= notice[i].title %></b></h4>
+                <div class="d-flex ms-auto">
+                  <%- include('content.ejs',{url : `/content/${notice[i].id}`}) %>
+                  <%- include('edit.ejs',{url : `/edit/${notice[i].id}`,mail: notice[i].email}) %>
+                  <%- include('delete.ejs',{url : `/delete/${notice[i].id}`,mail: notice[i].email}) %>
+                </div>
+              </div>
+              <% if(notice[i].description.length>25){%>
+                <%    str1=notice[i].description;%>
+                <%     str1=str1.substring(0,100);%>
+                  <p class="cbody1 card-text"><%= str1 %> . . . </p>
+                <% } else{%>
+                  <%     str1=notice[i].description; %>
+                  <p class="cbody1 card-text"><%= str1 %></p>
+                <% }%>
+
+              <% if(notice[i].content.length>25){%>
+                <%    str1=notice[i].content;%>
+                <%     str1=str1.substring(0,100);%>
+                  <p class="cbody2 card-text"><%= str1 %> . . . </p>
+                <% } else{%>
+                  <%     str1=notice[i].content; %>
+                  <p class="cbody2 card-text"><%= str1 %></p>
+                <% }%>
+                  
+            </div>
+            <div class="card-footer text-muted d-flex ms-auto bg-transparent border-top-0">
+                <h5 class="mx-4">By <%= notice[i].author %></h5>
+              <div class="views"><%= notice[i].date %> </div>
+            </div>
+          </div>
+        <% } %>
+        <% } %>
+      </div>
+
+      </seciton>
+
+  <%- include('partials/footer') %>

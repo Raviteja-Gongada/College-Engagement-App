@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/display.css">
+
+    <div class="content">
+        <h1 class="text-center"><b>
+            <% if(post.type == "Interview") { %>
+               <b> Interview Experience 
+            <% } else {%>
+                Blog
+                <% } %>
+        </b></h1> 
+        <h2 class="text-center"> <b><%= post.title %> </b></h2> 
+        <h3 class="text-dark"> <b>
+            <% if(post.type=="Notice") {%>
+            Admin: 
+            <% }else {%>
+            Author:
+            <% }%>
+         </b><%= post.author %> </h3>
+        <h3><b>Description: </b></h3>
+        <h4 class="px-5"> <%= post.description %> </h4> 
+        <h3> <b>Content:</b> </h3>
+        <h4 class="px-5"> <%= post.content %> </h4> 
+        <h4> <b>Created on: </b><%= post.date %> </h4>
+        <% if(post.type!="Notice"){%>
+        <h4> <b>Likes =</b> <%= post.upvote %> </h4>
+        <h4> <b>Dislikes = </b><%= post.downvote %> </h4>
+        <% }%>
+    </div>
+
+    <%- include('partials/footer') %>
