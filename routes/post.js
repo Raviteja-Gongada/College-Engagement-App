@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
-const {getAllBlogs,getAllNotice,getAllInterview,getAllContent,getEdit,getMypost,postupVote,postdownVote,postUpdate,postdelete} = require('../controllers/postcontroller')
+const {getAllBlogs,getAllNotice,getAllInterview,getAllContent,getEdit,getMypost,postupVote,postdownVote,postUpdate,postdelete} = require("../controllers/postcontroller")
 const isAuth = require("../middlewares/isAuth");
 const isAuthor = require("../middlewares/isAuthor");
 
