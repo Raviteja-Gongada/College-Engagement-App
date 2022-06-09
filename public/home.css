@@ -1,5 +1,5 @@
 .about{
-    height:100vh;
+    height: 34rem;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("img/college.jpg");
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -18,27 +18,8 @@
 .info{
   border: 0.3rem solid gray;
 }
-
-
-/* homepage */
-.homepage{
-  background-image: url(/img/welcome.jpg);
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: 240vh;
  
-  position: relative;
-}
-#homepage-text{
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3.8rem;
-  color: white;
-  
-}
+ 
 
 /* Main Box Recent*/
 #main_box {

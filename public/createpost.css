@@ -5,7 +5,7 @@
     /* box-sizing: border-box; */
     border: 0.13rem solid gray;
     border-radius: 1.9rem;
-    height:80vh;
+    height:35rem;
     background-color: rgb(155, 154, 154);
 }
 
@@ -16,7 +16,7 @@
 .createrow{
     margin:0;
     padding:0;
-    height:80vh;
+    height:35rem;
 }
 
 .form-check{
@@ -34,7 +34,7 @@
 }
 .vl {
     border-left: 0.4rem solid rgb(79, 79, 79);
-    height:79vh;
+    height:35rem;
   }
 
   /* Media Query for Mobile Devices */

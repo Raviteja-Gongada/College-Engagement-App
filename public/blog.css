@@ -12,7 +12,7 @@
 
 .searchbar{
     width:100%;
-    border: 1px solid black;
+    border: 0.06rem solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
