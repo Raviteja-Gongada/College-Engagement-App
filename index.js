@@ -32,8 +32,7 @@ app.use(methodOverride('_method'));
 //to connect MongoDB_URI that we mentioned in the .env file
 mongoose.connect(process.env.MONGODB_URI,
     {
-        useNewUrlParser:true,
-        useUnifiedTopology: false
+        useNewUrlParser:true
     },() =>{
     console.log("Hurry,MongoDB Atlas connected!!");
 })
