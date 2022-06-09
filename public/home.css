@@ -3,7 +3,7 @@
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("img/college.jpg");
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size: 100vw 100vh;
+    background-size:cover;
     font-family: adobe-caslon-w01-smbd,adobe-caslon-w08-smbd,serif;
 }
 .welcome{
