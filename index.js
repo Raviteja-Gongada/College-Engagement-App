@@ -30,7 +30,15 @@ app.use(methodOverride('_method'));
 // const MONGODB_URI = "mongodb://localhost:27017/College_App";
 
 //to connect MongoDB_URI that we mentioned in the .env file
-mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true},() =>{
+mongoose.connect(process.env.MONGODB_URI,
+    {
+        useNewUrlParser:true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        reconnectTries: 30,
+        reconnectInterval: 500
+    },() =>{
     console.log("Hurry,MongoDB Atlas connected!!");
 })
 //to save the session details in the MongoDB
