@@ -33,11 +33,7 @@ app.use(methodOverride('_method'));
 mongoose.connect(process.env.MONGODB_URI,
     {
         useNewUrlParser:true,
-        useFindAndModify: false,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        reconnectTries: 30,
-        reconnectInterval: 500
+        useUnifiedTopology: false
     },() =>{
     console.log("Hurry,MongoDB Atlas connected!!");
 })
