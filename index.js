@@ -43,9 +43,14 @@ app.use(methodOverride('_method'));
 
 
 //to connect MongoDB_URI that we mentioned in the .env file
-mongoose.connect(process.env.MONGODB_URI,options,{ keepAlive: true, keepAliveInitialDelay: 300000 },() =>{
-    console.log("Hurry,MongoDB Atlas connected!!");
-})
+mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser: true,useUnifiedTopology: true})
+        .then(() => {
+            console.log("Hurry,MongoDB Atlas connected!!");
+            })
+        .catch((err) => {
+            console.log(err);
+            });
+       
 //to save the session details in the MongoDB
 const store = new MongoDBStore({uri: process.env.MONGODB_URI, collection: 'Sessions'});
 
