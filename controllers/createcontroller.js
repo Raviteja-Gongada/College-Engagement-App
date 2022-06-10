@@ -16,7 +16,10 @@ exports.createPost = async (req, res) => {
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     
     var today = date+' '+time;
-    
+
+    var text = content.split("\n");
+    content = text.join('.</br>');
+
     try {
         let post
         post = await Post.create({
