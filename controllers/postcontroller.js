@@ -93,12 +93,16 @@ exports.postUpdate = async (req,res) => {
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     
     var today = date+' '+time;
+
+    var text = req.body.content.split("\n");
+    var content = text.join('.</br>');
+
     try{
         post = await Post.findById(req.params.id)
         post.title=req.body.title;
         post.type=req.body.gridRadios;
         post.description=req.body.description;
-        post.content=req.body.content;
+        post.content=content;
         post.date=today;
         await post.save();
         if(post.type=="Blog"){
