@@ -17,8 +17,6 @@ exports.createPost = async (req, res) => {
     
     var today = date+' '+time;
 
-    var text = content.split("\n");
-    content = text.join('.</br>');
 
     try {
         let post
